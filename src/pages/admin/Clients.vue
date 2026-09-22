@@ -5,6 +5,7 @@ import { Plus, Search, Eye, Pencil, Trash2 } from "lucide-vue-next";
 import BaseCard from "@/components/ui/BaseCard.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import BaseBadge from "@/components/ui/BaseBadge.vue";
+import ClientModal from "@/components/ui/ClientModal.vue";
 
 import { clients, type Client } from "@/data/mock/clients";
 
@@ -13,7 +14,7 @@ const statusFilter = ref("All");
 const planFilter = ref("All");
 
 const filteredClients = computed(() => {
-  return clients.filter((client) => {
+  return clientList.value.filter((client) => {
     const searchValue = search.value.toLowerCase();
 
     const matchesSearch =
@@ -34,7 +35,38 @@ const filteredClients = computed(() => {
   });
 });
 
+const clientList = ref<Client[]>(clients.map((client) => ({ ...client })));
+const isClientModalOpen = ref(false);
+const editingClient = ref<Client | null>(null);
+
 const selectedClient = ref<Client | null>(null);
+
+const openCreateModal = () => {
+  editingClient.value = null;
+  isClientModalOpen.value = true;
+};
+
+const openEditModal = (client: Client) => {
+  editingClient.value = { ...client };
+  isClientModalOpen.value = true;
+};
+
+const closeClientModal = () => {
+  isClientModalOpen.value = false;
+  editingClient.value = null;
+};
+
+const saveClient = (client: Client) => {
+  if (editingClient.value) {
+    const index = clientList.value.findIndex((item) => item.id === client.id);
+    if (index !== -1) clientList.value[index] = client;
+  } else {
+    const newId = Math.max(0, ...clientList.value.map((item) => item.id)) + 1;
+    clientList.value.unshift({ ...client, id: newId });
+  }
+
+  closeClientModal();
+};
 
 const viewClient = (client: Client) => {
   selectedClient.value = client;
@@ -255,7 +287,7 @@ const deleteClient = (client: Client) => {
                   <button
                     class="rounded-lg p-2 text-gray-500 hover:bg-gray-100"
                     title="Edit"
-                    @click="editClient(client)"
+                    @click="openEditModal(client)"
                   >
                     <Pencil :size="17" />
                   </button>
