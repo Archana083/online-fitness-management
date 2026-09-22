@@ -6,7 +6,7 @@ import BaseCard from "@/components/ui/BaseCard.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import BaseBadge from "@/components/ui/BaseBadge.vue";
 
-import { clients, type Client } from "@/data/clients";
+import { clients, type Client } from "@/data/mock/clients";
 
 const search = ref("");
 const statusFilter = ref("All");
