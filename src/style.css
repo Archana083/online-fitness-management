@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f9fafb;
+}
+
+.dark body {
+  background: #111827;
+}
+
+* {
+  scrollbar-width: thin;
+}
