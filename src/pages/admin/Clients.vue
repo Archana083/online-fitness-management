@@ -6,12 +6,21 @@ import BaseCard from "@/components/ui/BaseCard.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import BaseBadge from "@/components/ui/BaseBadge.vue";
 import ClientModal from "@/components/ui/ClientModal.vue";
+import ClientModal from "@/components/ui/ClientModal.vue";
 
 import { clients, type Client } from "@/data/mock/clients";
 
 const search = ref("");
 const statusFilter = ref("All");
 const planFilter = ref("All");
+
+const clientList = ref<Client[]>(clients.map((client) => ({ ...client })));
+const isClientModalOpen = ref(false);
+const editingClient = ref<Client | null>(null);
+
+const isViewModalOpen = ref(false);
+const clientToDelete = ref<Client | null>(null);
+const isDeleteModalOpen = ref(false);
 
 const filteredClients = computed(() => {
   return clientList.value.filter((client) => {
