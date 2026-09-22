@@ -40,6 +40,9 @@ const isClientModalOpen = ref(false);
 const editingClient = ref<Client | null>(null);
 
 const selectedClient = ref<Client | null>(null);
+const isViewModalOpen = ref(false);
+const isDeleteModalOpen = ref(false);
+const clientToDelete = ref<Client | null>(null);
 
 const openCreateModal = () => {
   editingClient.value = null;
