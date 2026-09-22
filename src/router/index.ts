@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Adminlayout from "@/layouts/AdminLayout.vue";
 import Dashboard from "@/pages/admin/Dashboard.vue";
+import Clients from "@/pages/admin/Clients.vue";
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -18,6 +20,11 @@ const router = createRouter({
                     path: "dashboard",
                     name: "admin-dashboard",
                     component: Dashboard,
+                },
+                {
+                    path: "clients",
+                    name: "admin-clients",
+                    component: Clients,
                 }
             ]
         }
