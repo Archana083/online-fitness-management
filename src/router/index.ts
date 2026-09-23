@@ -4,6 +4,7 @@ import Dashboard from "@/pages/admin/Dashboard.vue";
 import Clients from "@/pages/admin/Clients.vue";
 import Trainers from "@/pages/admin/Trainers.vue";
 import Programs from "@/pages/admin/Programs.vue";
+import Exercises from "@/pages/admin/Exercises.vue";
 
 
 const router = createRouter({
@@ -37,6 +38,11 @@ const router = createRouter({
                     path: "programs",
                     name: "admin-programs",
                     component: Programs,
+                },
+                {
+                    path: "exercises",
+                    name: "admin-exercises",
+                    component: Exercises,
                 }
             ]
         }
