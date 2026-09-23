@@ -5,6 +5,7 @@ import Clients from "@/pages/admin/Clients.vue";
 import Trainers from "@/pages/admin/Trainers.vue";
 import Programs from "@/pages/admin/Programs.vue";
 import Exercises from "@/pages/admin/Exercises.vue";
+import WorkoutPlans from "@/pages/admin/WorkoutPlans.vue";
 
 
 const router = createRouter({
@@ -43,6 +44,11 @@ const router = createRouter({
                     path: "exercises",
                     name: "admin-exercises",
                     component: Exercises,
+                },
+                {
+                    path: "workout-plans",
+                    name: "admin-workout-plans",
+                    component: WorkoutPlans,
                 }
             ]
         }
