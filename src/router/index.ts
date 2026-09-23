@@ -6,6 +6,7 @@ import Trainers from "@/pages/admin/Trainers.vue";
 import Programs from "@/pages/admin/Programs.vue";
 import Exercises from "@/pages/admin/Exercises.vue";
 import WorkoutPlans from "@/pages/admin/WorkoutPlans.vue";
+import Nutrition from "@/pages/admin/Nutrition.vue";
 
 
 const router = createRouter({
@@ -49,6 +50,11 @@ const router = createRouter({
                     path: "workout-plans",
                     name: "admin-workout-plans",
                     component: WorkoutPlans,
+                },
+                {
+                    path: "nutrition",
+                    name: "admin-nutrition",
+                    component: Nutrition,
                 }
             ]
         }
