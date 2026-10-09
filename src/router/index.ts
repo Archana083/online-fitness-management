@@ -7,58 +7,64 @@ import Programs from "@/pages/admin/Programs.vue";
 import Exercises from "@/pages/admin/Exercises.vue";
 import WorkoutPlans from "@/pages/admin/WorkoutPlans.vue";
 import Nutrition from "@/pages/admin/Nutrition.vue";
+import Sessions from "@/pages/admin/sessions.vue";
 
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes: [
+  history: createWebHistory(),
+  routes: [
+    {
+      path: "/",
+      redirect: "/admin/dashboard",
+    },
+    {
+      path: "/admin",
+      component: Adminlayout,
+      redirect: "/admin/dashboard",
+      children: [
         {
-            path: "/",
-            redirect: "/admin/dashboard",
+          path: "dashboard",
+          name: "admin-dashboard",
+          component: Dashboard,
         },
         {
-            path: "/admin",
-            component: Adminlayout,
-            redirect: "/admin/dashboard",
-            children: [
-                {
-                    path: "dashboard",
-                    name: "admin-dashboard",
-                    component: Dashboard,
-                },
-                {
-                    path: "clients",
-                    name: "admin-clients",
-                    component: Clients,
-                },
-                {
-                    path: "trainers",
-                    name: "admin-trainers",
-                    component: Trainers,
-                },
-                {
-                    path: "programs",
-                    name: "admin-programs",
-                    component: Programs,
-                },
-                {
-                    path: "exercises",
-                    name: "admin-exercises",
-                    component: Exercises,
-                },
-                {
-                    path: "workout-plans",
-                    name: "admin-workout-plans",
-                    component: WorkoutPlans,
-                },
-                {
-                    path: "nutrition",
-                    name: "admin-nutrition",
-                    component: Nutrition,
-                }
-            ]
-        }
-    ]
-})
+          path: "clients",
+          name: "admin-clients",
+          component: Clients,
+        },
+        {
+          path: "trainers",
+          name: "admin-trainers",
+          component: Trainers,
+        },
+        {
+          path: "programs",
+          name: "admin-programs",
+          component: Programs,
+        },
+        {
+          path: "exercises",
+          name: "admin-exercises",
+          component: Exercises,
+        },
+        {
+          path: "workout-plans",
+          name: "admin-workout-plans",
+          component: WorkoutPlans,
+        },
+        {
+          path: "nutrition",
+          name: "admin-nutrition",
+          component: Nutrition,
+        },
+        {
+          path: "sessions",
+          name: "admin-session",
+          component: Sessions,
+        },
+      ],
+    },
+  ],
+});
 
 export default router;
