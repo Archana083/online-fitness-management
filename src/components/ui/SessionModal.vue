@@ -14,11 +14,13 @@
           <h2 class="text-lg font-bold">Schedule Session</h2>
           <button @click="emit('close')">X</button>
         </div>
-        <form class="grid gap-4 p-6 md:grid-cols-2"
-         @submit.prevent="handleSubmit">
+        <form
+          class="grid gap-4 p-6 md:grid-cols-2"
+          @submit.prevent="handleSubmit"
+        >
           <div>
             <label class="label">Client *</label>
-            <select class="input" v-model="form.clientName">
+            <select class="input" v-model="form.clientName" @input="delete errors.clientName">
               <option value="">Select client</option>
               <option>Ananya Sharma</option>
               <option>Rohan Kapoor</option>
@@ -26,34 +28,49 @@
               <option>Arjun Patel</option>
               <option>Kavya Nair</option>
             </select>
+            <p v-if="errors.clientName" class="text-red-500 text-xs mt-1">
+              {{ errors.clientName }}
+            </p>
           </div>
           <div>
             <label class="label">Trainer *</label>
-            <select class="input" v-model="form.trainerName">
+            <select class="input" @input="delete errors.trainerName" v-model="form.trainerName">
               <option value="">Select trainer</option>
               <option value="Rahul Mehta">Rahul Mehta</option>
               <option value="Priya Singh">Priya Singh</option>
               <option value="Amit Shah">Amit Shah</option>
               <option value="Neha Kapoor">Neha Kapoor</option>
             </select>
+            <p v-if="errors.trainerName" class="text-red-500 text-xs mt-1">
+              {{ errors.trainerName }}
+            </p>
           </div>
 
           <div class="md:col-span-2">
             <label class="label">Date *</label>
-            <input v-model="form.date" type="date" class="input" />
+            <input v-model="form.date" type="date" class="input" @input="delete errors.date" />
+            <p v-if="errors.date" class="text-red-500 text-xs mt-1">
+              {{ errors.date }}
+            </p>
           </div>
           <div>
             <label class="label">Start Time *</label>
-            <input v-model="form.startTime" type="time" class="input" />
+            <input v-model="form.startTime" @input="delete errors.startTime" type="time" class="input" />
+            <p v-if="errors.startTime" class="text-red-500 text-xs mt-1">
+              {{ errors.startTime }}
+            </p>
           </div>
           <div>
             <label class="label">End Time *</label>
-            <input v-model="form.endTime" type="time" class="input" />
+            <input v-model="form.endTime" type="time" class="input" @input="delete errors.endTime" />
+            <p v-if="errors.endTime" class="text-red-500 text-xs mt-1">
+              {{ errors.endTime }}
+            </p>
           </div>
 
           <div>
             <label class="label">Session Type *</label>
-            <select v-model="form.type" class="input">
+            <select v-model="form.type" class="input" @input="delete errors.type">
               <option value="">Select type</option>
               <option value="Personal Training">Personal Training</option>
               <option value="Workout Review">Workout Review</option>
@@ -63,35 +80,43 @@
               <option value="Progress Check-in">Progress Check-in</option>
               <option value="Online Training">Online Training</option>
             </select>
+            <p v-if="errors.type" class="text-red-500 text-xs mt-1">
+              {{ errors.type }}
+            </p>
           </div>
           <div>
             <label class="label">Location *</label>
-            <select v-model="form.location" class="input">
+            <select v-model="form.location" class="input" @input="delete errors.location">
               <option value="">Select location</option>
               <option value="Gym">Gym</option>
               <option value="Online">Online</option>
               <option value="Client Home">Client Home</option>
             </select>
+            <p v-if="errors.location" class="text-red-500 text-xs mt-1">
+              {{ errors.location }}
+            </p>
           </div>
 
           <div class="md:col-span-2">
             <label class="label">Status *</label>
-            <select v-model="form.status" class="input">
+            <select v-model="form.status" class="input" @input="delete errors.status">
               <option value="Scheduled">Scheduled</option>
               <option value="Completed">Completed</option>
               <option value="Cancelled">Cancelled</option>
               <option value="No Show">No Show</option>
             </select>
+            
           </div>
 
           <div class="md:col-span-2">
             <label class="label">Notes</label>
             <textarea
               v-model="form.notes"
-              rows="3"
+              rows="2"
               class="input"
               placeholder="Session notes..."
-           ></textarea>
+            ></textarea>
+          
           </div>
           <div class="md:col-span-2">
             <label class="label">Meeting Link</label>
@@ -102,26 +127,24 @@
               placeholder="https://meet.google.com/..."
             />
           </div>
-            <div
-          class="flex justify-end gap-3 border-t border-slate-100 px-6 py-4 dark:border-slate-800"
-        >
-          <button
-            type="button"
-            class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
-            @click="emit('close')"
+          <div
+            class="flex justify-end gap-3 border-t border-slate-100 px-6 py-4 dark:border-slate-800"
           >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900"
-          >
-            Save
-          </button>
-        </div>
+            <button
+              type="button"
+              class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+              @click="emit('close')"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+            >
+              Save
+            </button>
+          </div>
         </form>
-
-      
       </div>
     </div>
   </Teleport>
@@ -129,7 +152,7 @@
 
 <script setup lang="ts">
 import type { Session } from "@/data/mock/sessions";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 const form = ref({
   clientName: "",
   trainerName: "",
@@ -151,12 +174,76 @@ const props = withDefaults(
     session: null,
   },
 );
+const errors = ref<Record<string, string>>({});
+type RequiredField = "clientName" | "trainerName" | "location" | "date" | "startTime" | "endTime" | "type";
+
+const validateRequired  = (field:RequiredField, fieldName:string) =>{
+  if(!form.value[field].trim()){
+    errors.value[field] = `${fieldName} is required`;
+  }
+  else{
+    delete errors.value[field];
+  }
+}
 const handleSubmit = () => {
-   console.log("SAVE CLICKED");
-  console.log(form.value);
-  emit('save', form.value)
-  };
+  errors.value = {};
+
+  validateRequired("clientName", "Client name");
+  validateRequired("trainerName", "Trainer name");
+  validateRequired("location", "Location");
+  validateRequired("date", "Date");
+  validateRequired("startTime", "Start time");
+  validateRequired("endTime", "End time");
+  validateRequired("type", "Session type");
+
+ if( form.value.startTime &&
+  form.value.endTime && form.value.startTime >= form.value.endTime){
+    errors.value.endTime = "End time must be after start time";
+  }
+  if (Object.keys(errors.value).length > 0) {
+    return;
+  }
+ 
+
+  emit("save", form.value);
+};
 const emit = defineEmits<{ close: []; save: [session : typeof  form.value] }>();
+
+watch(
+  () => props.session,
+  (session) =>{
+    if(session){
+      form.value ={
+         clientName: session.clientName,
+        trainerName: session.trainerName,
+        date: session.date,
+        startTime: session.startTime,
+        endTime: session.endTime,
+        type: session.type,
+        location: session.location,
+        status: session.status,
+        notes: session.notes,
+        meetingLink: session.meetingLink,
+      }
+    }
+    else{
+      form.value = {
+        clientName: "",
+        trainerName: "",
+        date: "",
+        startTime: "",
+        endTime: "",
+        type: "",
+        location: "",
+        status: "Scheduled",
+        notes: "",
+        meetingLink: "",
+      }
+    }
+  },
+    { immediate: true }
+
+)
 </script>
 
 <style scoped>
