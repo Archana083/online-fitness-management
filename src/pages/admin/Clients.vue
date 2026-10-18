@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { Plus, Search, Eye, Pencil, Trash2 } from "lucide-vue-next";
 import BaseCard from "@/components/ui/BaseCard.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import BaseBadge from "@/components/ui/BaseBadge.vue";
 import ClientModal from "@/components/ui/ClientModal.vue";
-import { clients, type Client } from "@/data/mock/clients";
+import type { Client } from "@/data/mock/clients";
+import { getClients } from "@/services/clientService";
 
 const search = ref("");
 const statusFilter = ref("All");
 const planFilter = ref("All");
 
-const clientList = ref<Client[]>(clients.map((client) => ({ ...client })));
+const clientList = ref<Client[]>([]);
 const isClientModalOpen = ref(false);
 const editingClient = ref<Client | null>(null);
 const selectedClient = ref<Client | null>(null);
@@ -19,6 +20,18 @@ const isViewModalOpen = ref(false);
 const clientToDelete = ref<Client | null>(null);
 const isDeleteModalOpen = ref(false);
 
+const loadClientList = async () =>{
+  try{
+    const response = await getClients();    
+    clientList.value = response;
+  }
+  catch(error){
+    console.error("Error fetching clients:", error);
+  }
+}
+onMounted(() => {
+  loadClientList();
+});
 const filteredClients = computed(() => clientList.value.filter((client) => {
   const q = search.value.toLowerCase();
   return (!q || client.name.toLowerCase().includes(q) || client.email.toLowerCase().includes(q) || client.phone.includes(q))
@@ -110,9 +123,9 @@ const confirmDelete = () => {
                 <div><p class="font-medium text-gray-900">{{ client.name }}</p><p class="text-xs text-gray-500">{{ client.email }}</p></div>
               </div></td>
               <td class="px-4 py-4 text-gray-600">{{ client.trainer || "Not assigned" }}</td>
-              <td class="px-4 py-4">{{ client.plan }}</td>
+              <td class="px-4 py-4 text-gray-600">{{ client.plan }}</td>
               <td class="px-4 py-4 text-gray-600">{{ client.goal }}</td>
-              <td class="px-4 py-4 text-gray-600">{{ client.joinedDate }}</td>
+              <td class="px-4 py-4 text-gray-600">{{ client.joining_date }}</td>
               <td class="px-4 py-4"><BaseBadge :variant="client.status === 'Active' ? 'success' : client.status === 'Pending' ? 'warning' : 'danger'">{{ client.status }}</BaseBadge></td>
               <td class="px-4 py-4"><div class="flex justify-end gap-1">
                 <button class="rounded-lg p-2 text-gray-500 hover:bg-gray-100" title="View" @click="viewClient(client)"><Eye :size="17" /></button>

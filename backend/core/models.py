@@ -5,7 +5,7 @@ class Client(models.Model):
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15)
     trainer = models.ForeignKey('Trainer', on_delete=models.PROTECT, related_name='clients')
-    plan = models.CharField(max_length=100)
+    plan = models.CharField(max_length=100, choices=[('basic', 'Basic'), ('pro', 'Pro'), ('premium', 'Premium')])
     goal = models.CharField(max_length=200)
     joining_date = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=20, 
