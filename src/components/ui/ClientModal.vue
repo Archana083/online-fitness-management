@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed, reactive, watch } from "vue";
+import { computed, onMounted, reactive, watch } from "vue";
 import BaseModal from "@/components/ui/BaseModal.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
-import type { Client, ClientStatus } from "@/data/mock/clients";
+import type { Client, ClientStatus } from "@/data/clients";
+import { ref } from "vue";
+import { getTrainers } from "@/services/trainerService";
 
 const props = withDefaults(
   defineProps<{
@@ -21,18 +23,26 @@ const emptyForm = (): Omit<Client, "id"> => ({
   name: "",
   email: "",
   phone: "",
-  trainer: "",
-  plan: "Basic",
+  trainer: 0,
+  plan: "",
   goal: "",
   joinedDate: new Date().toISOString().slice(0, 10),
-  status: "Active",
+  status: "active",
 });
 
 const form = reactive<Omit<Client, "id">>(emptyForm());
 
 const isEditMode = computed(() => !!props.client);
 const title = computed(() => (isEditMode.value ? "Edit Client" : "Add Client"));
-
+interface Trainer {
+  id: number;
+  name: string;
+}
+const trainers = ref<Trainer[]>([]);
+onMounted( async () => {
+  trainers.value = await getTrainers()
+  console.log(trainers.value, 'trainers');
+});
 watch(
   () => props.client,
   (client) => {
@@ -78,10 +88,10 @@ const submit = () => {
           <label class="text-sm font-medium text-gray-700">Trainer</label>
           <select v-model="form.trainer"
             class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-gray-400">
-            <option value="">Select trainer</option>
-            <option>Rahul Mehta</option>
-            <option>Priya Singh</option>
-            <option>Amit Shah</option>
+            <option value="0" disabled>Select trainer</option>
+            <option v-for="trainer in trainers" :key="trainer.id" :value="trainer.id">
+              {{ trainer.name }}
+            </option>
           </select>
         </div>
 
@@ -89,9 +99,10 @@ const submit = () => {
           <label class="text-sm font-medium text-gray-700">Plan</label>
           <select v-model="form.plan"
             class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-gray-400">
-            <option>Basic</option>
-            <option>Pro</option>
-            <option>Premium</option>
+            <option value="" disabled>Select plan</option>
+            <option value="basic">Basic</option>
+            <option value="pro">Pro</option>
+            <option value="premium">Premium</option>
           </select>
         </div>
 
@@ -100,10 +111,10 @@ const submit = () => {
           <select v-model="form.goal"
             class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-gray-400">
             <option value="">Select goal</option>
-            <option>Weight Loss</option>
-            <option>Muscle Gain</option>
-            <option>General Fitness</option>
-            <option>Strength</option>
+            <option value="weight_loss">Weight Loss</option>
+            <option value="muscle_gain">Muscle Gain</option>
+            <option value="general_fitness">General Fitness</option>
+            <option value="strength">Strength</option>
           </select>
         </div>
 
@@ -117,9 +128,9 @@ const submit = () => {
           <label class="text-sm font-medium text-gray-700">Status</label>
           <select v-model="form.status"
             class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-gray-400">
-            <option>Active</option>
-            <option>Inactive</option>
-            <option>Pending</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="pending">Pending</option>
           </select>
         </div>
       </div>
