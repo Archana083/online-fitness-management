@@ -282,7 +282,7 @@ console.log(todaysSession.value, 'todaysSession')
             v-model="search"
             type="text"
             placeholder="Search client or trainer..."
-            class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           />
         </div>
 
