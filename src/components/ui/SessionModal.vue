@@ -139,7 +139,7 @@
             </button>
             <button
               type="submit"
-              class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+              class="rounded-xl bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-orange-600/20 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-400"
             >
               Save
             </button>
