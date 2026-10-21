@@ -125,7 +125,7 @@ const planTotal = (
             class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
           /><input
             v-model="search"
-            class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
             placeholder="Search plans, clients, trainers..."
           />
         </div>
@@ -163,7 +163,7 @@ const planTotal = (
             <tr
               v-for="p in filtered"
               :key="p.id"
-              class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40"
+              class="hover:bg-orange-50/30 dark:hover:bg-slate-800/40"
             >
               <td class="px-5 py-4">
                 <p class="font-semibold">{{ p.name }}</p>
