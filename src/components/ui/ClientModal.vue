@@ -2,7 +2,7 @@
 import { computed, onMounted, reactive, watch } from "vue";
 import BaseModal from "@/components/ui/BaseModal.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
-import type { Client, ClientStatus } from "@/data/clients";
+import type { Client, ClientStatus, ClientForm } from "@/data/clients";
 import { ref } from "vue";
 import { getTrainers } from "@/services/trainerService";
 
@@ -19,7 +19,7 @@ const emit = defineEmits<{
   save: [client: Client];
 }>();
 
-const emptyForm = (): Omit<Client, "id"> => ({
+const emptyForm = (): ClientForm => ({
   name: "",
   email: "",
   phone: "",
@@ -30,7 +30,7 @@ const emptyForm = (): Omit<Client, "id"> => ({
   status: "active",
 });
 
-const form = reactive<Omit<Client, "id">>(emptyForm());
+const form =  reactive<ClientForm>(emptyForm());
 
 const isEditMode = computed(() => !!props.client);
 const title = computed(() => (isEditMode.value ? "Edit Client" : "Add Client"));

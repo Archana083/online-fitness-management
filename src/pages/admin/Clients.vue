@@ -1,119 +1,128 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from 'vue'
-import { Plus, Search, Eye, Pencil, Trash2 } from 'lucide-vue-next'
-import BaseCard from '@/components/ui/BaseCard.vue'
-import BaseButton from '@/components/ui/BaseButton.vue'
-import BaseBadge from '@/components/ui/BaseBadge.vue'
-import ClientModal from '@/components/ui/ClientModal.vue'
-import type { Client } from '@/data/clients'
-import { createClient, getClients, updateClient } from '@/services/clientService'
+import { computed, ref, onMounted } from "vue";
+import { Plus, Search, Eye, Pencil, Trash2 } from "lucide-vue-next";
+import BaseCard from "@/components/ui/BaseCard.vue";
+import BaseButton from "@/components/ui/BaseButton.vue";
+import BaseBadge from "@/components/ui/BaseBadge.vue";
+import ClientModal from "@/components/ui/ClientModal.vue";
+import type { Client } from "@/data/clients";
+import {
+  createClient,
+  getClients,
+  updateClient,
+  deleteClient,
+} from "@/services/clientService";
 
-const search = ref('')
-const statusFilter = ref('All')
-const planFilter = ref('All')
+const search = ref("");
+const statusFilter = ref("All");
+const planFilter = ref("All");
 
-const clientList = ref<Client[]>([])
-const isClientModalOpen = ref(false)
-const editingClient = ref<Client | null>(null)
-const selectedClient = ref<Client | null>(null)
-const isViewModalOpen = ref(false)
-const clientToDelete = ref<Client | null>(null)
-const isDeleteModalOpen = ref(false)
+const clientList = ref<Client[]>([]);
+const isClientModalOpen = ref(false);
+const editingClient = ref<Client | null>(null);
+const selectedClient = ref<Client | null>(null);
+const isViewModalOpen = ref(false);
+const clientToDelete = ref<Client | null>(null);
+const isDeleteModalOpen = ref(false);
 const formatLabel = (value: string) => {
-  if (!value) return ''
+  if (!value) return "";
   return value
-    .split('_')
+    .split("_")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-}
+    .join(" ");
+};
 const loadClientList = async () => {
   try {
-    const response = await getClients()
+    const response = await getClients();
     clientList.value = response.map((client: any) => ({
       ...client,
       joinedDate: client.joining_date,
       phone: client.phone_number,
-    }))
+    }));
   } catch (error) {
-    console.error('Error fetching clients:', error)
+    console.error("Error fetching clients:", error);
   }
-}
+};
 onMounted(() => {
-  loadClientList()
-})
+  loadClientList();
+});
 const filteredClients = computed(() =>
   clientList.value.filter((client) => {
-    const q = search.value.toLowerCase()
+    const q = search.value.toLowerCase();
     return (
       (!q ||
         client.name.toLowerCase().includes(q) ||
         client.email.toLowerCase().includes(q) ||
         client.phone.includes(q)) &&
-      (statusFilter.value === 'All' || client.status === statusFilter.value) &&
-      (planFilter.value === 'All' || client.plan === planFilter.value)
-    )
+      (statusFilter.value === "All" || client.status === statusFilter.value) &&
+      (planFilter.value === "All" || client.plan === planFilter.value)
+    );
   }),
-)
+);
 
 const openCreateModal = () => {
-  editingClient.value = null
-  isClientModalOpen.value = true
-}
+  editingClient.value = null;
+  isClientModalOpen.value = true;
+};
 
 const openEditModal = (client: Client) => {
-  editingClient.value = { ...client }
-  console.log(editingClient.value, 'hello')
+  editingClient.value = { ...client };
+  console.log(editingClient.value, "hello");
 
-  isClientModalOpen.value = true
-}
+  isClientModalOpen.value = true;
+};
 
 const closeClientModal = () => {
-  isClientModalOpen.value = false
-  editingClient.value = null
-}
+  isClientModalOpen.value = false;
+  editingClient.value = null;
+};
 
 const saveClient = async (client: Client) => {
   try {
-    console.log(client, 'client')
+    console.log(client, "client");
     if (editingClient.value) {
       await updateClient(client.id, {
         ...client,
         phone_number: client.phone,
         trainer: client.trainer,
-      } as any)
-    }
-    else{
+      } as any);
+    } else {
       await createClient({
         ...client,
         phone_number: client.phone,
         trainer: client.trainer,
-      } as any)
+      } as any);
     }
-    await loadClientList()
-    closeClientModal()
+    await loadClientList();
+    closeClientModal();
   } catch (error) {
-    console.error('Error saving client:', error)
+    console.error("Error saving client:", error);
   }
-}
+};
 
 const viewClient = (client: Client) => {
-  selectedClient.value = client
-  isViewModalOpen.value = true
-}
+  selectedClient.value = client;
+  isViewModalOpen.value = true;
+};
 
-const deleteClient = (client: Client) => {
-  clientToDelete.value = client
-  isDeleteModalOpen.value = true
-}
+const deleteClientData = (client: Client) => {
+  clientToDelete.value = client;
+  console.log(clientToDelete.value);
+  isDeleteModalOpen.value = true;
+};
 
-const confirmDelete = () => {
-  if (!clientToDelete.value) return
-  clientList.value = clientList.value.filter(
-    (client) => client.id !== clientToDelete.value!.id,
-  )
-  clientToDelete.value = null
-  isDeleteModalOpen.value = false
-}
+const confirmDelete = async () => {
+  if (!clientToDelete.value) return;
+
+  try {
+    await deleteClient(clientToDelete.value.id);
+    clientToDelete.value = null;
+    isDeleteModalOpen.value = false;
+    await loadClientList();
+  } catch (error) {
+    console.error("Failed to delete client:", error);
+  }
+};
 </script>
 
 <template>
@@ -197,7 +206,7 @@ const confirmDelete = () => {
                 </div>
               </td>
               <td class="px-4 py-4 text-gray-600">
-                {{ client.trainer || 'Not assigned' }}
+                {{ client.trainer || "Not assigned" }}
               </td>
               <td class="px-4 py-4 text-gray-600">{{ client.plan }}</td>
               <td class="px-4 py-4 text-gray-600">
@@ -235,7 +244,7 @@ const confirmDelete = () => {
                   <button
                     class="rounded-lg p-2 text-red-500 hover:bg-red-50"
                     title="Delete"
-                    @click="deleteClient(client)"
+                    @click="deleteClientData(client)"
                   >
                     <Trash2 :size="17" />
                   </button>
@@ -304,7 +313,7 @@ const confirmDelete = () => {
               <div>
                 <p class="text-xs text-gray-500">Trainer</p>
                 <p class="mt-1 text-sm font-medium">
-                  {{ selectedClient.trainer || 'Not assigned' }}
+                  {{ selectedClient.trainer || "Not assigned" }}
                 </p>
               </div>
               <div>
