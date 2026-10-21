@@ -164,7 +164,7 @@ console.log(todaysSession.value, 'todaysSession')
       <button
         @click="createSession"
         type="button"
-        class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+        class="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm shadow-orange-600/20 transition hover:bg-orange-700 dark:bg-orange-500 dark:text-white dark:hover:bg-orange-400"
       >
         <Plus :size="18" />
         Add Session
@@ -189,7 +189,7 @@ console.log(todaysSession.value, 'todaysSession')
           </div>
 
           <div
-            class="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+            class="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 text-orange-600 dark:bg-orange-400/10 dark:text-orange-300"
           >
             <CalendarDays :size="20" />
           </div>
@@ -282,14 +282,14 @@ console.log(todaysSession.value, 'todaysSession')
             v-model="search"
             type="text"
             placeholder="Search client or trainer..."
-            class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-2 focus:ring-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 focus:ring-2 focus:ring-slate-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           />
         </div>
 
         <!-- Status -->
         <select
           v-model="selectedStatus"
-          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
+          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
         >
           <option>All Status</option>
           <option>Scheduled</option>
@@ -301,7 +301,7 @@ console.log(todaysSession.value, 'todaysSession')
         <!-- Trainer -->
         <select
           v-model="selectedTrainer"
-          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
+          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
         >
           <option>All Trainers</option>
           <option>Rahul Mehta</option>
@@ -313,7 +313,7 @@ console.log(todaysSession.value, 'todaysSession')
         <!-- Session Type -->
         <select
           v-model="selectedType"
-          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
+          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
         >
           <option>All Types</option>
           <option>Personal Training</option>
@@ -327,7 +327,7 @@ console.log(todaysSession.value, 'todaysSession')
         <input
           v-model="selectedDate"
           type="date"
-          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
+          class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200"
         />
       </div>
     </div>
@@ -366,7 +366,7 @@ console.log(todaysSession.value, 'todaysSession')
           >
             <div class="flex min-w-0 items-center gap-3">
               <div
-                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 dark:bg-orange-400/10 dark:text-orange-300"
               >
                 <Dumbbell :size="18" />
               </div>
@@ -426,7 +426,7 @@ console.log(todaysSession.value, 'todaysSession')
           >
             <div class="flex min-w-0 items-center gap-3">
               <div
-                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 dark:bg-orange-400/10 dark:text-orange-300"
               >
                 <CalendarDays :size="18" />
               </div>
@@ -537,7 +537,7 @@ console.log(todaysSession.value, 'todaysSession')
             <!-- Row 1 -->
             <tr
               v-for="session in filterSession"
-              class="transition hover:bg-slate-50/70 dark:hover:bg-slate-800/40"
+              class="transition hover:bg-orange-50/30 dark:hover:bg-slate-800/40"
             >
               <td class="whitespace-nowrap px-5 py-4">
                 <p class="text-sm font-semibold text-slate-900 dark:text-white">
@@ -616,14 +616,14 @@ console.log(todaysSession.value, 'todaysSession')
               <td class="px-5 py-4">
                 <div class="flex justify-end gap-1">
                   <button
-                    class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                    class="rounded-lg p-2 text-slate-500 hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-400/10 dark:hover:text-orange-300"
                   >
                     <Eye :size="17" />
                   </button>
 
                   <button
                     @click="editSession(session)"
-                    class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                    class="rounded-lg p-2 text-slate-500 hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-400/10 dark:hover:text-orange-300"
                   >
                     <Pencil :size="17" />
                   </button>
