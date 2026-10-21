@@ -172,7 +172,7 @@ const submit = () => {
 
     <!-- Actions -->
     <div
-      class="flex justify-end gap-3 border-t border-slate-100 pt-4 dark:border-slate-800 dark:border-slate-800"
+      class="flex justify-end gap-3 border-t border-slate-100 pt-4 dark:border-slate-800"
     >
       <BaseButton
         type="button"
