@@ -150,12 +150,12 @@ const confirmDelete = async () => {
             v-model="search"
             type="text"
             placeholder="Search clients..."
-            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-orange-400 dark:border-orange-500"
+            class="w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-orange-500 dark:focus:ring-orange-500/10"
           />
         </div>
         <select
           v-model="statusFilter"
-          class="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm outline-none"
+          class="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:border-orange-500 dark:focus:ring-orange-500/10"
         >
           <option>All</option>
           <option>Active</option>
@@ -164,7 +164,7 @@ const confirmDelete = async () => {
         </select>
         <select
           v-model="planFilter"
-          class="rounded-lg border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm outline-none"
+          class="rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:focus:border-orange-500 dark:focus:ring-orange-500/10"
         >
           <option>All</option>
           <option>Basic</option>
@@ -176,7 +176,7 @@ const confirmDelete = async () => {
       <div class="mt-5 overflow-x-auto">
         <table class="w-full min-w-[900px] text-left text-sm">
           <thead>
-            <tr class="border-b border-slate-100 text-xs uppercase dark:border-slate-800 text-slate-500 dark:text-slate-400">
+            <tr class="border-b border-slate-100 text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800 dark:text-slate-400">
               <th class="px-4 py-3">Client</th>
               <th class="px-4 py-3">Trainer</th>
               <th class="px-4 py-3">Plan</th>
@@ -274,8 +274,8 @@ const confirmDelete = async () => {
         class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 backdrop-blur-sm p-4"
         @click.self="isViewModalOpen = false"
       >
-        <div class="w-full max-w-lg rounded-2xl border border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-xl">
-          <div class="flex items-center justify-between border-b px-6 py-4">
+        <div class="w-full max-w-lg rounded-2xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900 shadow-xl">
+          <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
             <div>
               <h2 class="text-lg font-semibold text-slate-900 dark:text-white">
                 Client Details
@@ -292,7 +292,7 @@ const confirmDelete = async () => {
           <div class="p-6">
             <div class="mb-6 flex items-center gap-4">
               <div
-                class="flex h-14 w-14 items-center justify-center rounded-full bg-orange-50 dark:bg-orange-950/30 text-lg font-semibold"
+                class="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-100 text-lg font-bold text-orange-700 dark:bg-orange-400/15 dark:text-orange-300"
               >
                 {{ selectedClient.name.charAt(0) }}
               </div>
@@ -359,7 +359,7 @@ const confirmDelete = async () => {
         class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 backdrop-blur-sm p-4"
         @click.self="isDeleteModalOpen = false"
       >
-        <div class="w-full max-w-md rounded-2xl border border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-700 shadow-xl">
+        <div class="w-full max-w-md rounded-2xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900 shadow-xl">
           <div class="p-6">
             <div
               class="flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-600"
