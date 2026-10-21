@@ -216,7 +216,7 @@ const save = () => {
               </p>
             </div>
             <button
-              class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+              class="inline-flex items-center gap-2 rounded-xl bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm shadow-orange-600/20 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-400"
               @click="addMeal"
             >
               <Plus :size="16" />Add Meal
@@ -348,12 +348,12 @@ const save = () => {
           class="flex justify-end gap-3 border-t border-slate-100 px-6 py-4 dark:border-slate-800"
         >
           <button
-            class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"
+            class="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
             @click="emit('close')"
           >
             Cancel</button
           ><button
-            class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+            class="rounded-xl bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-orange-600/20 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-400"
             @click="save"
           >
             {{ editing ? "Save Changes" : "Create Plan" }}
@@ -371,6 +371,9 @@ const save = () => {
   font-weight: 600;
   color: #64748b;
 }
+:global(.dark) .label {
+  color: #94a3b8;
+}
 .input {
   width: 100%;
   border: 1px solid #e2e8f0;
@@ -381,8 +384,8 @@ const save = () => {
   outline: none;
 }
 .input:focus {
-  border-color: #94a3b8;
-  box-shadow: 0 0 0 3px rgb(148 163 184 / 0.15);
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgb(249 115 22 / 0.15);
 }
 :global(.dark) .input {
   border-color: #334155;
