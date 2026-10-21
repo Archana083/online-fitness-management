@@ -60,7 +60,7 @@ const formatPrice = (price: number) => new Intl.NumberFormat("en-IN", { style: "
 
     <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
       <div class="grid gap-3 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-        <div class="relative"><Search :size="17" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" /><input v-model="search" placeholder="Search programs..." class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white" /></div>
+        <div class="relative"><Search :size="17" class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" /><input v-model="search" placeholder="Search programs..." class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-800 dark:text-white" /></div>
         <select v-model="categoryFilter" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-white"><option v-for="item in categories" :key="item">{{ item }}</option></select>
         <select v-model="levelFilter" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-white"><option v-for="item in levels" :key="item">{{ item }}</option></select>
         <select v-model="statusFilter" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-white"><option>All</option><option>Active</option><option>Draft</option><option>Archived</option></select>
@@ -71,7 +71,7 @@ const formatPrice = (price: number) => new Intl.NumberFormat("en-IN", { style: "
       <div class="overflow-x-auto"><table class="w-full min-w-[980px] text-left text-sm">
         <thead class="border-b border-slate-100 bg-slate-50/70 text-[10px] uppercase tracking-wider text-slate-400 dark:border-slate-800 dark:bg-slate-800/50"><tr><th class="px-5 py-3.5">Program</th><th class="px-4 py-3.5">Category</th><th class="px-4 py-3.5">Level</th><th class="px-4 py-3.5">Duration</th><th class="px-4 py-3.5">Clients</th><th class="px-4 py-3.5">Price</th><th class="px-4 py-3.5">Status</th><th class="px-5 py-3.5 text-right">Actions</th></tr></thead>
         <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-          <tr v-for="program in filteredPrograms" :key="program.id" class="transition hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+          <tr v-for="program in filteredPrograms" :key="program.id" class="transition hover:bg-orange-50/30 dark:hover:bg-slate-800/40">
             <td class="px-5 py-4"><p class="font-semibold">{{ program.name }}</p><p class="mt-1 max-w-xs truncate text-xs text-slate-400">{{ program.description }}</p></td>
             <td class="px-4 py-4">{{ program.category }}</td>
             <td class="px-4 py-4">{{ program.level }}</td>
@@ -79,7 +79,7 @@ const formatPrice = (price: number) => new Intl.NumberFormat("en-IN", { style: "
             <td class="px-4 py-4"><div class="flex items-center gap-1.5 text-slate-600 dark:text-slate-300"><Users :size="15" />{{ program.clients }}</div></td>
             <td class="px-4 py-4"><div class="flex items-center gap-1 text-slate-700 dark:text-slate-200"><IndianRupee :size="14" />{{ formatPrice(program.price).replace("₹","") }}</div></td>
             <td class="px-4 py-4"><BaseBadge :variant="program.status === 'Active' ? 'success' : program.status === 'Draft' ? 'warning' : 'info'">{{ program.status }}</BaseBadge></td>
-            <td class="px-5 py-4"><div class="flex justify-end gap-1"><button title="View" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white" @click="selectedProgram = program"><Eye :size="17" /></button><button title="Edit" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white" @click="openEdit(program)"><Pencil :size="17" /></button><button title="Delete" class="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/30" @click="programToDelete = program"><Trash2 :size="17" /></button></div></td>
+            <td class="px-5 py-4"><div class="flex justify-end gap-1"><button title="View" class="rounded-lg p-2 text-slate-400 hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-400/10 dark:hover:text-orange-300" @click="selectedProgram = program"><Eye :size="17" /></button><button title="Edit" class="rounded-lg p-2 text-slate-400 hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-400/10 dark:hover:text-orange-300" @click="openEdit(program)"><Pencil :size="17" /></button><button title="Delete" class="rounded-lg p-2 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/30" @click="programToDelete = program"><Trash2 :size="17" /></button></div></td>
           </tr>
           <tr v-if="filteredPrograms.length === 0"><td colspan="8" class="px-5 py-12 text-center text-sm text-slate-400">No programs match your filters.</td></tr>
         </tbody>
