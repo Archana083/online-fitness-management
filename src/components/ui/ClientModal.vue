@@ -69,25 +69,25 @@ const submit = () => {
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Name</label>
           <input v-model="form.name" required type="text" placeholder="Client name"
-            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 focus:ring-2 focus:ring-gray-100" />
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-orange-500 dark:focus:ring-orange-500/10" />
         </div>
 
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Email</label>
           <input v-model="form.email" required type="email" placeholder="client@example.com"
-            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 focus:ring-2 focus:ring-gray-100" />
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-orange-500 dark:focus:ring-orange-500/10" />
         </div>
 
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Phone</label>
           <input v-model="form.phone" required type="tel" placeholder="+91 98765 43210"
-            class="w-full rounded-lg border border-slate-200 dark:border-slate-700 px-3 py-2.5 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 focus:ring-2 focus:ring-gray-100" />
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-orange-500 dark:focus:ring-orange-500/10" />
         </div>
 
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Trainer</label>
           <select v-model="form.trainer"
-            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
             <option value="0" disabled>Select trainer</option>
             <option v-for="trainer in trainers" :key="trainer.id" :value="trainer.id">
               {{ trainer.name }}
@@ -98,7 +98,7 @@ const submit = () => {
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Plan</label>
           <select v-model="form.plan"
-            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
             <option value="" disabled>Select plan</option>
             <option value="basic">Basic</option>
             <option value="pro">Pro</option>
@@ -109,7 +109,7 @@ const submit = () => {
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Goal</label>
           <select v-model="form.goal"
-            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
             <option value="">Select goal</option>
             <option value="weight_loss">Weight Loss</option>
             <option value="muscle_gain">Muscle Gain</option>
@@ -121,13 +121,13 @@ const submit = () => {
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Joined Date</label>
           <input v-model="form.joinedDate" type="date"
-            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10" />
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-orange-500 dark:focus:ring-orange-500/10" />
         </div>
 
         <div class="space-y-1.5">
           <label class="text-sm font-medium text-slate-700 dark:text-slate-200">Status</label>
           <select v-model="form.status"
-            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
+            class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:border-orange-500 dark:focus:ring-orange-500/10">
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
             <option value="pending">Pending</option>
@@ -135,7 +135,7 @@ const submit = () => {
         </div>
       </div>
 
-      <div class="flex justify-end gap-3 border-t pt-5">
+      <div class="flex justify-end gap-3 border-t border-slate-100 pt-5 dark:border-slate-800">
         <BaseButton type="button" variant="secondary" @click="emit('close')">
           Cancel
         </BaseButton>
