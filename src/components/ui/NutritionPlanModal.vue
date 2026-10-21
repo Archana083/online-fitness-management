@@ -216,7 +216,7 @@ const save = () => {
               </p>
             </div>
             <button
-              class="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+              class="inline-flex items-center gap-2 rounded-xl bg-orange-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm shadow-orange-600/20 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-400"
               @click="addMeal"
             >
               <Plus :size="16" />Add Meal
@@ -353,7 +353,7 @@ const save = () => {
           >
             Cancel</button
           ><button
-            class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900"
+            class="rounded-xl bg-orange-600 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-orange-600/20 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-400"
             @click="save"
           >
             {{ editing ? "Save Changes" : "Create Plan" }}
