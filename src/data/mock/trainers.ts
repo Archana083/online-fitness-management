@@ -1,5 +1,11 @@
-export type TrainerStatus = "Active" | "Inactive";
-
+export type TrainerStatus = "active" | "inactive";
+export type TrainerSpecialization =
+  | "Strength & Conditioning"
+  | "Weight loss & Nutrition"
+  | "Functional Training"
+  | "Yoga & Mobility"
+  | "HIIT & Cardio"
+  | "Strength & Weight Loss";
 export interface Trainer {
   id: number;
   name: string;
@@ -10,7 +16,7 @@ export interface Trainer {
   clients: number;
   joinedDate: string;
   status: TrainerStatus;
-  bio: string;
+  bio?: string;
 }
 
 export const trainers: Trainer[] = [
@@ -23,7 +29,7 @@ export const trainers: Trainer[] = [
     experience: 7,
     clients: 24,
     joinedDate: "2023-02-15",
-    status: "Active",
+    status: "active",
     bio: "Strength and conditioning coach focused on progressive training, mobility, and sustainable performance.",
   },
   {
