@@ -17,7 +17,7 @@ const icons = [Users, Dumbbell, CreditCard, IndianRupee];
 
   <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
     <div v-for="(stat,index) in dashboardStats" :key="stat.label" class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-      <div class="flex items-start justify-between"><div><p class="text-xs font-medium text-slate-500 dark:text-slate-400">{{stat.label}}</p><p class="mt-3 text-2xl font-bold tracking-tight">{{stat.value}}</p></div><div class="rounded-xl bg-slate-100 p-2.5 text-slate-600 dark:bg-slate-800 dark:text-slate-300"><component :is="icons[index]" :size="19"/></div></div>
+      <div class="flex items-start justify-between"><div><p class="text-xs font-medium text-slate-500 dark:text-slate-400">{{stat.label}}</p><p class="mt-3 text-2xl font-bold tracking-tight">{{stat.value}}</p></div><div class="rounded-xl bg-orange-50 p-2.5 text-orange-600 dark:bg-orange-400/10 dark:text-orange-300"><component :is="icons[index]" :size="19"/></div></div>
       <div class="mt-4 flex items-center gap-2"><BaseBadge variant="success">{{stat.change}}</BaseBadge><span class="text-xs text-slate-400">vs last month</span></div>
     </div>
   </div>
