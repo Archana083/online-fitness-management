@@ -201,7 +201,7 @@ const initials = (name: string) =>
           <input
             v-model="search"
             placeholder="Search trainer, email, specialization..."
-            class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 dark:focus:border-orange-500 dark:focus:ring-orange-500/10 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           />
         </div>
         <select
@@ -244,7 +244,7 @@ const initials = (name: string) =>
             <tr
               v-for="trainer in filteredTrainers"
               :key="trainer.id"
-              class="transition hover:bg-slate-50/70 dark:hover:bg-slate-800/40"
+              class="transition hover:bg-orange-50/30 dark:hover:bg-slate-800/40"
             >
               <td class="px-5 py-4">
                 <div class="flex items-center gap-3">
@@ -286,13 +286,13 @@ const initials = (name: string) =>
                 <div class="flex justify-end gap-1">
                   <button
                     title="View"
-                    class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                    class="rounded-lg p-2 text-slate-400 hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-400/10 dark:hover:text-orange-300"
                     @click="viewTrainer(trainer)"
                   >
                     <Eye :size="17" /></button
                   ><button
                     title="Edit"
-                    class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                    class="rounded-lg p-2 text-slate-400 hover:bg-orange-50 hover:text-orange-700 dark:hover:bg-orange-400/10 dark:hover:text-orange-300"
                     @click="openEdit(trainer)"
                   >
                     <Pencil :size="17" /></button
