@@ -47,6 +47,7 @@ onMounted(() => {
   loadClientList();
 });
 const filteredClients = computed(() =>
+
   clientList.value.filter((client) => {
     const q = search.value.toLowerCase();
     return (
@@ -54,8 +55,8 @@ const filteredClients = computed(() =>
         client.name.toLowerCase().includes(q) ||
         client.email.toLowerCase().includes(q) ||
         client.phone.includes(q)) &&
-      (statusFilter.value === "All" || client.status === statusFilter.value) &&
-      (planFilter.value === "All" || client.plan === planFilter.value)
+      (statusFilter.value === "All" || client.status ===  (statusFilter.value).toLowerCase()) &&
+      (planFilter.value === "All" || client.plan === (planFilter.value).toLowerCase())
     );
   }),
 );
@@ -138,7 +139,6 @@ const confirmDelete = async () => {
         <Plus :size="18" class="mr-2" /> Add Client
       </BaseButton>
     </div>
-
     <BaseCard>
       <div class="flex flex-col gap-4 border-b border-slate-100 pb-5 dark:border-slate-800 lg:flex-row">
         <div class="relative flex-1">
@@ -208,7 +208,7 @@ const confirmDelete = async () => {
               <td class="px-4 py-4 text-slate-600 dark:text-slate-300">
                 {{ client.trainer || "Not assigned" }}
               </td>
-              <td class="px-4 py-4 text-slate-600 dark:text-slate-300">{{ client.plan }}</td>
+              <td class="px-4 py-4 text-slate-600 dark:text-slate-300">{{ (client.plan).toUpperCase() }}</td>
               <td class="px-4 py-4 text-slate-600 dark:text-slate-300">
                 {{ formatLabel(client.goal) }}
               </td>
